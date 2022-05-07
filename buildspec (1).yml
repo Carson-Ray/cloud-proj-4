@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      #download nodeJS
+      - curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+      #install nodeJS
+      - apt-get install -y nodejs
+  pre_build:
+    commands:
+      #resolve NodeJS dependencies for React
+      - npm install
+  build:
+    commands:
+      #compile NodeJS React to static js, html, css
+      - npm run build
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: build
